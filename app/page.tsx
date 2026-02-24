@@ -59,8 +59,40 @@ const App = () => {
     }
   };
 
+  // Arama motorları (Google) için Yapısal Veri (Schema.org - LocalBusiness/AutoTowing)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AutoTowing",
+    "name": "Martı Oto Kurtarma",
+    "image": "https://www.martiotokurtarma.com/logo.png", // Varsa logonuzun URL'si
+    "@id": "https://www.martiotokurtarma.com",
+    "url": "https://www.martiotokurtarma.com",
+    "telephone": "+905451011978",
+    "priceRange": "₺₺",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bursa",
+      "addressCountry": "TR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.1828, // Bursa merkez koordinatları (Kendi net koordinatınızı girebilirsiniz)
+      "longitude": 29.0667 
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-zinc-50 font-sans text-zinc-900 selection:bg-red-200 selection:text-red-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* Üst Bilgi Şeridi (Top Bar) */}
       <div className="hidden md:flex bg-zinc-900 text-zinc-300 py-2 text-sm">
@@ -171,7 +203,7 @@ const App = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 md:h-3 md:w-3 bg-red-500"></span>
               </span>
-              Bursa'da En Yakın Çekici
+              Bursa 7/24 Acil Yol Yardım &amp; Oto Çekici
             </div>
             
             {/* Yazı boyutu mobilde daha makul seviyeye çekildi */}
@@ -190,7 +222,6 @@ const App = () => {
               <div className="w-full md:w-1/2 bg-white/5 backdrop-blur-sm border border-zinc-700/50 p-4 md:p-6 rounded-2xl flex flex-col items-center shadow-2xl">
                 <div className="flex flex-row items-center justify-between w-full mb-3 md:mb-5">
                   <div className="text-left">
-                    <span className="text-zinc-400 text-[10px] md:text-xs font-semibold uppercase tracking-wider block">Yetkili</span>
                     <h3 className="text-lg md:text-2xl font-black text-white">{contacts[0].name}</h3>
                   </div>
                   <span className="text-xs md:text-sm font-medium text-red-300 bg-red-500/10 px-2 py-1 md:px-3 md:py-1.5 rounded-lg border border-red-500/20">{contacts[0].phone}</span>
@@ -209,7 +240,6 @@ const App = () => {
               <div className="w-full md:w-1/2 bg-white/5 backdrop-blur-sm border border-zinc-700/50 p-4 md:p-6 rounded-2xl flex flex-col items-center shadow-2xl">
                 <div className="flex flex-row items-center justify-between w-full mb-3 md:mb-5">
                   <div className="text-left">
-                    <span className="text-zinc-400 text-[10px] md:text-xs font-semibold uppercase tracking-wider block">Yetkili</span>
                     <h3 className="text-lg md:text-2xl font-black text-white">{contacts[1].name}</h3>
                   </div>
                   <span className="text-xs md:text-sm font-medium text-zinc-300 bg-zinc-500/10 px-2 py-1 md:px-3 md:py-1.5 rounded-lg border border-zinc-500/20">{contacts[1].phone}</span>
@@ -368,7 +398,6 @@ const App = () => {
             
             {/* Hakan CTA Kartı */}
             <div className="w-full md:w-1/2 bg-white p-6 md:p-8 rounded-3xl flex flex-col items-center shadow-2xl hover:scale-105 transition-transform">
-              <span className="text-red-500 text-sm font-bold uppercase tracking-wider mb-2">Yetkili</span>
               <h3 className="text-2xl font-black text-zinc-900 mb-6">{contacts[0].name}</h3>
               <div className="flex flex-col sm:flex-row gap-3 w-full">
                 <a href={contacts[0].call} className="flex-1 flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white py-3.5 rounded-xl font-bold transition-colors">
@@ -382,7 +411,6 @@ const App = () => {
             
             {/* Orhan CTA Kartı */}
             <div className="w-full md:w-1/2 bg-zinc-900 p-6 md:p-8 rounded-3xl flex flex-col items-center shadow-2xl hover:scale-105 transition-transform border-2 border-zinc-800">
-              <span className="text-zinc-500 text-sm font-bold uppercase tracking-wider mb-2">Yetkili</span>
               <h3 className="text-2xl font-black text-white mb-6">{contacts[1].name}</h3>
               <div className="flex flex-col sm:flex-row gap-3 w-full">
                 <a href={contacts[1].call} className="flex-1 flex items-center justify-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-white py-3.5 rounded-xl font-bold transition-colors border border-zinc-700">
@@ -422,10 +450,7 @@ const App = () => {
 
             {/* İletişim 1 */}
             <div className="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800/50 flex flex-col justify-center">
-              <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-                <ShieldCheck size={20} className="text-red-500"/> Yetkili İletişim
-              </h4>
-              <span className="font-bold text-zinc-300 mb-2">{contacts[0].name}</span>
+              <span className="font-bold text-zinc-300 text-lg mb-2">{contacts[0].name}</span>
               <div className="flex gap-4">
                 <a href={contacts[0].call} className="flex items-center gap-2 text-xl font-black text-white hover:text-red-500 transition-colors">
                   <Phone size={20} className="text-red-600" /> {contacts[0].phone}
@@ -438,10 +463,7 @@ const App = () => {
 
             {/* İletişim 2 */}
             <div className="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800/50 flex flex-col justify-center">
-              <h4 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-                <ShieldCheck size={20} className="text-red-500"/> Yetkili İletişim
-              </h4>
-              <span className="font-bold text-zinc-300 mb-2">{contacts[1].name}</span>
+              <span className="font-bold text-zinc-300 text-lg mb-2">{contacts[1].name}</span>
               <div className="flex gap-4">
                 <a href={contacts[1].call} className="flex items-center gap-2 text-xl font-black text-white hover:text-red-500 transition-colors">
                   <Phone size={20} className="text-zinc-500" /> {contacts[1].phone}
