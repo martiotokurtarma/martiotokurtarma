@@ -119,14 +119,10 @@ const App = () => {
               <span className="text-sm font-bold tracking-widest text-red-600 uppercase leading-none mt-1">Oto Kurtarma</span>
             </div>
 
-            {/* Masaüstü Menü (Linkler) */}
-            <div className="hidden lg:flex items-center gap-8">
-              <button onClick={() => scrollTo('hizmetler')} className="text-zinc-600 hover:text-red-600 font-medium transition-colors">Hizmetler</button>
-              <button onClick={() => scrollTo('hakkimizda')} className="text-zinc-600 hover:text-red-600 font-medium transition-colors">Hakkımızda</button>
-            </div>
-
-            {/* Masaüstü CTA (Hızlı Arama Butonları) */}
-            <div className="hidden md:flex items-center gap-3">
+            {/* Masaüstü Menü ve CTA (Hızlı Arama Butonları) */}
+            <div className="hidden md:flex items-center gap-4 lg:gap-6">
+              <button onClick={() => scrollTo('hizmetler')} className="text-zinc-600 hover:text-red-600 font-semibold transition-colors mr-2">Hizmetler</button>
+              
               {/* Hakan İletişim Grubu */}
               <div className="flex items-center shadow-md rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all">
                 <a href={contacts[0].call} className="bg-red-600 text-white px-4 py-2.5 rounded-l-xl hover:bg-red-700 flex flex-col items-center">
@@ -182,9 +178,8 @@ const App = () => {
               </div>
 
             </div>
-            <div className="pt-2">
+            <div className="pt-2 pb-2">
               <button onClick={() => scrollTo('hizmetler')} className="w-full text-left px-6 py-3 text-zinc-800 font-medium hover:bg-zinc-50">Hizmetler</button>
-              <button onClick={() => scrollTo('hakkimizda')} className="w-full text-left px-6 py-3 text-zinc-800 font-medium hover:bg-zinc-50">Hakkımızda</button>
             </div>
           </div>
         )}
@@ -349,7 +344,7 @@ const App = () => {
             {/* Kart 3 */}
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-zinc-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full">
               <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors">
-                <Battery className="text-red-600 group-hover:text-white transition-colors" size={32} />
+                <Wrench className="text-red-600 group-hover:text-white transition-colors" size={32} />
               </div>
               <h4 className="text-2xl font-bold mb-4 text-zinc-900">Akü & Yol Yardım</h4>
               <p className="text-zinc-600 leading-relaxed mb-8 flex-grow">Akünüz mü bitti veya lastiğiniz mi patladı? Çekiciye gerek kalmadan konumunuza gelerek yerinde profesyonel müdahale sağlıyoruz.</p>
