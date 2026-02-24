@@ -59,12 +59,12 @@ const App = () => {
     }
   };
 
-  // Arama motorları (Google) için Yapısal Veri (Schema.org - LocalBusiness/AutoTowing)
+  // Google için Yapısal Veri (Schema.org - AutoTowing)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AutoTowing",
     "name": "Martı Oto Kurtarma",
-    "image": "https://www.martiotokurtarma.com/logo.png", // Varsa logonuzun URL'si
+    "image": "https://www.martiotokurtarma.com/logo.png",
     "@id": "https://www.martiotokurtarma.com",
     "url": "https://www.martiotokurtarma.com",
     "telephone": "+905451011978",
@@ -76,7 +76,7 @@ const App = () => {
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 40.1828, // Bursa merkez koordinatları (Kendi net koordinatınızı girebilirsiniz)
+      "latitude": 40.1828,
       "longitude": 29.0667 
     },
     "openingHoursSpecification": {
@@ -89,11 +89,13 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-zinc-50 font-sans text-zinc-900 selection:bg-red-200 selection:text-red-900">
+      
+      {/* Schema Markup Injection */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
+
       {/* Üst Bilgi Şeridi (Top Bar) */}
       <div className="hidden md:flex bg-zinc-900 text-zinc-300 py-2 text-sm">
         <div className="container mx-auto px-4 md:px-8 flex items-center max-w-7xl">
@@ -188,13 +190,12 @@ const App = () => {
         )}
       </nav>
 
-      {/* Hero (Ana Görsel) Alanı - Mobil için sıkıştırıldı */}
+      {/* Hero (Ana Görsel) Alanı */}
       <section className="relative bg-zinc-900 overflow-hidden">
         {/* Dekoratif Arka Plan Şekli */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-red-600 rounded-full blur-[120px] opacity-30 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-red-600 rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
 
-        {/* Padding değerleri mobil (sayfa açılışına sığsın diye) azaltıldı */}
         <div className="container mx-auto px-4 md:px-8 max-w-5xl py-8 md:py-24 relative z-10 flex flex-col items-center justify-center min-h-[auto] md:min-h-[60vh]">
           
           <div className="space-y-5 md:space-y-8 text-center w-full">
@@ -206,19 +207,18 @@ const App = () => {
               Bursa 7/24 Acil Yol Yardım &amp; Oto Çekici
             </div>
             
-            {/* Yazı boyutu mobilde daha makul seviyeye çekildi */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white leading-[1.1]">
               Bursa'nın Her Yerinde <br className="hidden md:block"/> Anında <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Yanınızdayız</span>
             </h1>
             
             <p className="text-sm md:text-lg lg:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed px-2 md:px-0">
-              Aracınız mı arızalandı? Kazaya mı karıştınız? En kısa sürede yanınızdayız. Yetkili kişilere tek tıkla hemen ulaşın.
+              Aracınız mı arızalandı? Kazaya mı karıştınız? En kısa sürede yanınızdayız. Ekibimize tek tıkla hemen ulaşın.
             </p>
             
-            {/* Ana Arama ve WhatsApp Kartları - Kutu boyutları küçültüldü */}
+            {/* Ana Arama ve WhatsApp Kartları */}
             <div className="flex flex-col md:flex-row gap-3 md:gap-6 w-full max-w-4xl mx-auto pt-2 md:pt-6">
               
-              {/* Hakan Kartı (Kompakt) */}
+              {/* Hakan Kartı */}
               <div className="w-full md:w-1/2 bg-white/5 backdrop-blur-sm border border-zinc-700/50 p-4 md:p-6 rounded-2xl flex flex-col items-center shadow-2xl">
                 <div className="flex flex-row items-center justify-between w-full mb-3 md:mb-5">
                   <div className="text-left">
@@ -236,7 +236,7 @@ const App = () => {
                 </div>
               </div>
 
-              {/* Orhan Kartı (Kompakt) */}
+              {/* Orhan Kartı */}
               <div className="w-full md:w-1/2 bg-white/5 backdrop-blur-sm border border-zinc-700/50 p-4 md:p-6 rounded-2xl flex flex-col items-center shadow-2xl">
                 <div className="flex flex-row items-center justify-between w-full mb-3 md:mb-5">
                   <div className="text-left">
@@ -260,17 +260,13 @@ const App = () => {
         </div>
       </section>
 
-      {/* İstatistik / Güven Bandı */}
+      {/* İstatistik / Güven Bandı - 4 Sütundan 3 Sütuna Düşürüldü */}
       <div className="bg-red-600 text-white relative z-20 shadow-lg">
         <div className="container mx-auto px-4 md:px-8 max-w-7xl py-4 md:py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center divide-x divide-red-500/50">
+          <div className="grid grid-cols-3 gap-4 md:gap-6 text-center divide-x divide-red-500/50">
             <div className="px-2">
               <div className="text-xl md:text-3xl font-black mb-1">7/24</div>
               <div className="text-[10px] md:text-sm font-medium text-red-100">Kesintisiz İletişim</div>
-            </div>
-            <div className="px-2">
-              <div className="text-xl md:text-3xl font-black mb-1">100%</div>
-              <div className="text-[10px] md:text-sm font-medium text-red-100">Kaskolu Taşıma</div>
             </div>
             <div className="px-2">
               <div className="text-sm md:text-xl font-black mb-1">En Kısa Sürede</div>
